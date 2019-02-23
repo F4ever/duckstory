@@ -1,1 +1,1 @@
-web: gunicorn duckstory.duckstory.wsgi
+web: gunicorn duckstory.wsgi
