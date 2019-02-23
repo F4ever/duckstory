@@ -1,4 +1,6 @@
 import os
+
+import dj_database_url
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -12,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j&v02t(0*08wbw=+^042a9_5pk#u3j)u8kh#=g-osscxw-3j0o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEV', True)
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '*']
 
@@ -64,13 +66,21 @@ WSGI_APPLICATION = 'duckstory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    db = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    db = {
+        'URI': dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
+    }
 
+DATABASES = {
+    'default': db
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -108,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '../static/'
-STATIC_ROOT = '../static/'
+STATIC_URL = 'staticfiles/'
+STATIC_ROOT = 'staticfiles/'
 
 django_heroku.settings(locals())
