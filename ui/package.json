@@ -1,0 +1,46 @@
+{
+  "name": "duck-story",
+  "description": "DuckStory",
+  "author": "Raman Siamionau",
+  "scripts": {
+    "browserify": "browserify -e src/main.jsx -o ../static/build/bundle.js",
+    "watchify": "watchify -d -e src/main.jsx -o ../static/build/bundle.js -v",
+    "buildCss": "node-sass css/bundle.scss ../static/build/bundle.css",
+    "watchCss": "nodemon -e scss -x \"npm run buildCss\"",
+    "dev": "npm-run-all --parallel watchify watchCss",
+    "production": "npm-run-all browserify buildCss"
+  },
+  "dependencies": {
+    "history": "4.7.2",
+    "js-cookie": "2.2.0",
+    "prop-types": "15.6.2",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "react-redux": "5.1.1",
+    "react-router-dom": "4.3.1",
+    "react-router-redux": "5.0.0-alpha.9",
+    "redux": "3.7.2",
+    "whatwg-fetch": "2.0.4"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-polyfill": "6.26.0",
+    "bootstrap-sass": "3.4.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-2": "6.24.1",
+    "babelify": "8.0.0",
+    "browserify": "14.5.0",
+    "node-sass": "4.11.0",
+    "nodemon": "1.18.9",
+    "npm-run-all": "4.1.5",
+    "redux-devtools-extension": "2.13.7",
+    "watchify": "2.6.2"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/static/fonts/OpenSans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/static/fonts/OpenSans-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+*{
+  outline: none
+}
+
+body{
+  margin: 0;
+  font-family: 'Open Sans', serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+a{
+  text-decoration: none;
+}
+
+#main-container{
+  //padding-top: 107px;
+}
+
+.header{
+  position: fixed;
+  height: 84px;
+  width: 100%;
+  display: flex;
+  padding: 11px 0;
+  z-index: 10;
+
+  .logo{
+    margin-right: 15px;
+  }
+
+  .sections{
+    margin: auto 0;
+    display: flex;
+    font-size: 14px;
+
+    .section{
+      margin: 0 15px;
+    }
+  }
+
+  &-white{
+    background: white;
+
+    .section{
+      color: black;
+    }
+  }
+
+  &-inherit{
+    .section{
+      color: white;
+    }
+  }
+
+  .right-menu{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+
+    .setting{
+      margin: auto 13px;
+    }
+  }
+}
+
+.content{
+  .main-page{
+    height: 100vh;
+    background: url("/static/background/background.jpg");
+    position: relative;
+
+    .btn-container{
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      a{
+
+      }
+    }
+  }
+
+  .section{
+    margin: 50px;
+  }
+}
+
+.btn{
+  border: 1px solid #BDBDBD;
+  width: 300px;
+  padding: 8px 25px;
+  text-align: center;
+
+  &-inv{
+    color: white;
+  }
+}
+
+.footer{
+  background: url("/static/svg/footer.svg") repeat;
+  height: 160px;
+  width: 100%;
+
+  bottom: 0;
+}

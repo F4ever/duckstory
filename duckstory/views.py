@@ -12,7 +12,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         init_data = {
-            'SECTIONS': json.dumps(SectionSerializer(Section.objects.prefetch_related('productsection_set'), many=True).data),
+            'SECTIONS': json.dumps(SectionSerializer(Section.objects.filter(is_active=True).prefetch_related('productsection_set'), many=True).data),
             'PRODUCTS': json.dumps(ProductSerializer(Product.objects.all(), many=True).data),
         }
 

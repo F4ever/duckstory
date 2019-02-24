@@ -2,28 +2,19 @@
 
 <!doctype html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>&#129414; DuckStory</title>
-
-    <!-- Color the status bar on mobile devices -->
-    <meta name="theme-color" content="#2F3BA2">
-
-    <!-- Your styles -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  </head>
-  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-      </header>
-      <main class="mdl-layout__content">
-        <footer class="mdl-mega-footer">
-        </footer>
-      </main>
-    </div>
-    <script src="{% static 'js/main.js' %}"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>&#129414; DuckStory</title>
+  <link rel="stylesheet" href="{% static 'build/bundle.css' %}">
+  <script>
+    window.boot = {
+      SECTIONS: {% autoescape off %}{{ SECTIONS }}{% endautoescape %},
+      PRODUCTS: {% autoescape off %}{{ PRODUCTS }}{% endautoescape %},
+    };
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="{% static 'build/bundle.js' %}"></script>
+</body>
 </html>
