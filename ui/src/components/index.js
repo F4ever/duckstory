@@ -1,10 +1,34 @@
 import React, {Component} from 'react';
 import {SECTIONS} from "../context";
 import {slugify} from "../utils";
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import Slider from "react-slick";
+
+
+function NextArrow(props) {
+  return (
+    <div className={'prev-arrow'}/>
+  );
+}
+
+function PrevArrow(props) {
+  return (
+    <div className={'next-arrow'}/>
+  );
+}
 
 
 export default class Index extends Component {
   render(){
+    const settings = {
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      infinite: true,
+      nextArrow: <NextArrow/>,
+      prevArrow: <PrevArrow/>
+    };
+
     return (
       <div className={'content'}>
         <div className={'main-page'}>
@@ -23,21 +47,26 @@ export default class Index extends Component {
             <a href={'#'}>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="20" cy="20" r="19.5" stroke="#BDBDBD"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.2402 31V20.7286H14.4517V16.9746H17.2402C17.2402 16.9746 17.2433 15.9202 17.2402 15.5677C17.2399 15.5401 17.2396 15.5123 17.2393 15.4841C17.2258 14.1704 17.2054 12.1794 18.8409 10.5719C20.4257 9.01246 22.255 9.00293 23.4778 8.99976H25.5072V12.849C25.5072 12.849 23.6017 12.541 22.6108 13.0269C21.5659 13.5414 21.3277 14.6879 21.3277 15.5582V16.9746H25.5104V20.7286H21.3245V31H17.2402Z" fill="white"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M17.2402 31V20.7286H14.4517V16.9746H17.2402C17.2402 16.9746 17.2433 15.9202 17.2402 15.5677C17.2399 15.5401 17.2396 15.5123 17.2393 15.4841C17.2258 14.1704 17.2054 12.1794 18.8409 10.5719C20.4257 9.01246 22.255 9.00293 23.4778 8.99976H25.5072V12.849C25.5072 12.849 23.6017 12.541 22.6108 13.0269C21.5659 13.5414 21.3277 14.6879 21.3277 15.5582V16.9746H25.5104V20.7286H21.3245V31H17.2402Z" fill="white"/>
               </svg>
             </a>
           </div>
         </div>
         {
           SECTIONS.filter(section=>section.is_menu).map(section=>
-            <div key={section.id} id={slugify(section.name)} className={'section'}>
-              <div className={'section-name'}>{section.name}</div>
-              <hr/>
+            <Element key={section.id} id={slugify(section.name)} name={slugify(section.name)} className={'section'}>
               <div className={'section-container'}>
-                <div>Product</div>
-                <div>Product</div>
+                <div className={'section-name'}>{section.name}</div>
+                <hr/>
+                <div className={'section-products'}>
+                  <Slider {...settings}>
+                    <div><div>List of products</div></div>
+                    <div><div>List of products</div></div>
+                    <div><div>List of products</div></div>
+                  </Slider>
+                </div>
               </div>
-            </div>
+            </Element>
           )
         }
       </div>

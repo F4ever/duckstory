@@ -1,13 +1,51 @@
 import React, {Component} from 'react';
 import {SECTIONS} from "../context";
 import {slugify} from "../utils";
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
+
+const INHERIT = 'header-inherit';
+const WHITE = 'header-white';
 
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.checkScroll = this.checkScroll.bind(this);
+
+    this.state = {header: INHERIT};
+  }
+
+  componentDidMount(){
+    document.addEventListener('scroll', this.checkScroll, true);
+  }
+
+  checkScroll(event){
+    const {header} = this.state;
+
+    if (event.pageY > window.innerHeight - 106 && header === INHERIT){
+      this.setState({header: WHITE});
+    }
+
+    if (event.pageY < window.innerHeight - 106 && header === WHITE){
+      this.setState({header: INHERIT});
+    }
+  }
+
+  scrollTo(section){
+    scroller.scrollTo(section, {
+      duration: 800,
+      smooth: true
+    })
+  }
+
   render(){
+    const {header} = this.state;
+
     return (
-      <header className={'header header-white'}>
+      <header className={'header ' + header}>
+        <div className={'header-background'}/>
         <div className={'logo'}>
           <svg width="93" height="85" viewBox="0 0 93 85" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50.3428 84.2295H0V0H50.3428C73.5979 0 92.4575 18.8596 92.4575 42.1147C92.4575 65.3699 73.5979 84.2295 50.3428 84.2295Z" fill="#E74724"/>
@@ -25,7 +63,7 @@ export default class Header extends Component {
         <div className={'sections'}>
           {
             SECTIONS.filter(section=>section.is_menu).map(section=>
-              <a key={section.id} className={'section'} href={`#${slugify(section.name)}`}>
+              <a key={section.id} className={'section'} onClick={()=>this.scrollTo(slugify(section.name))}>
                 { section.name }
               </a>
             )
@@ -40,14 +78,14 @@ export default class Header extends Component {
           </div>
           <div className={'setting'} style={{height: 22}}>
             <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.2241 2.78218C19.8479 0.405941 16.1035 0.405941 13.7273 2.78218L12.5032 4.0063L11.279 2.78218C8.90279 0.405941 5.15842 0.405941 2.78218 2.78218C0.405941 5.15842 0.405941 8.90279 2.78218 11.279L4.07831 12.5752L12.5032 21H12.5752L22.2961 11.279C24.6004 8.90279 24.6004 5.08641 22.2241 2.78218Z" stroke="black" strokeWidth="1.5" strokeMiterlimit="22.9256" strokeLinejoin="round"/>
+              <path d="M22.2241 2.78218C19.8479 0.405941 16.1035 0.405941 13.7273 2.78218L12.5032 4.0063L11.279 2.78218C8.90279 0.405941 5.15842 0.405941 2.78218 2.78218C0.405941 5.15842 0.405941 8.90279 2.78218 11.279L4.07831 12.5752L12.5032 21H12.5752L22.2961 11.279C24.6004 8.90279 24.6004 5.08641 22.2241 2.78218Z" strokeWidth="1.5" strokeMiterlimit="22.9256" strokeLinejoin="round"/>
             </svg>
           </div>
           <div className={'setting'} style={{height: 28}}>
             <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2.83221 5.72144H20.1678C20.6611 5.72144 21.0134 6.14425 21.0839 6.63754L22 22.9161C22 23.4094 21.5772 23.8322 21.0839 23.8322H1.91611C1.42282 23.8322 1 23.4094 1 22.9161L1.91611 6.63754C1.98658 6.07378 2.33893 5.72144 2.83221 5.72144Z" stroke="black" strokeWidth="1.5" strokeMiterlimit="22.9256"/>
+              <path d="M2.83221 5.72144H20.1678C20.6611 5.72144 21.0134 6.14425 21.0839 6.63754L22 22.9161C22 23.4094 21.5772 23.8322 21.0839 23.8322H1.91611C1.42282 23.8322 1 23.4094 1 22.9161L1.91611 6.63754C1.98658 6.07378 2.33893 5.72144 2.83221 5.72144Z" strokeWidth="1.5" strokeMiterlimit="22.9256"/>
               <path d="M7.5533 7.62415C8.18753 7.62415 8.68081 8.11743 8.68081 8.75166C8.68081 9.38589 8.18753 9.87918 7.5533 9.87918C6.91907 9.87918 6.42578 9.38589 6.42578 8.75166C6.49625 8.11743 6.98954 7.62415 7.5533 7.62415ZM15.4459 7.62415C16.0801 7.62415 16.5734 8.11743 16.5734 8.75166C16.5734 9.38589 16.0801 9.87918 15.4459 9.87918C14.8117 9.87918 14.3184 9.38589 14.3184 8.75166C14.3184 8.11743 14.8117 7.62415 15.4459 7.62415Z" fill="black"/>
-              <path d="M15.3061 8.18792V4.80537C15.3061 2.69127 13.6148 1 11.5007 1C9.38659 1 7.69531 2.69127 7.69531 4.80537V8.11745" stroke="black" strokeWidth="1.5" strokeMiterlimit="22.9256"/>
+              <path d="M15.3061 8.18792V4.80537C15.3061 2.69127 13.6148 1 11.5007 1C9.38659 1 7.69531 2.69127 7.69531 4.80537V8.11745" strokeWidth="1.5" strokeMiterlimit="22.9256"/>
             </svg>
           </div>
         </div>

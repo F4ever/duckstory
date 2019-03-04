@@ -1,3 +1,5 @@
+@import url(~slick-carousel/slick/slick.css);
+@import url(~slick-carousel/slick/slick-theme.css);
 @font-face {
   font-family: 'Open Sans';
   src: url("/static/fonts/OpenSans-Regular.ttf");
@@ -36,23 +38,46 @@ a {
     display: flex;
     font-size: 14px; }
     .header .sections .section {
-      margin: 0 15px; }
-  .header-white {
-    background: white; }
-    .header-white .section {
-      color: black; }
-  .header-inherit .section {
-    color: white; }
+      margin: 0 15px;
+      cursor: pointer; }
   .header .right-menu {
     display: flex;
     justify-content: flex-end;
     flex-grow: 1; }
     .header .right-menu .setting {
-      margin: auto 13px; }
+      margin: auto 13px;
+      cursor: pointer; }
+  .header-white {
+    animation: change-to-white 500ms linear;
+    background-color: white; }
+
+@keyframes change-to-white {
+  from {
+    background-color: inherit; }
+  to {
+    background-color: white; } }
+    .header-white .right-menu {
+      stroke: black; }
+    .header-white .section {
+      color: black; }
+  .header-inherit {
+    animation: change-to-inherit 500ms linear; }
+
+@keyframes change-to-inherit {
+  from {
+    background-color: white; }
+  to {
+    background-color: inherit; } }
+    .header-inherit .right-menu {
+      stroke: white; }
+    .header-inherit .section {
+      color: white; }
+    .header-inherit .setting {
+      color: white; }
 
 .content .main-page {
   height: 100vh;
-  background: url("/static/background/background.jpg");
+  background: url("/static/background/index.png");
   position: relative; }
   .content .main-page .btn-container {
     position: absolute;
@@ -77,3 +102,10 @@ a {
   height: 160px;
   width: 100%;
   bottom: 0; }
+
+.prev-arrow {
+  background: url("/static/svg/left-slide.svg"); }
+
+.next-arrow {
+  background: url("/static/svg/left-slide.svg");
+  transform: rotate(180deg); }

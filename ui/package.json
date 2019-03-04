@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "history": "4.7.2",
+    "jquery": "^3.3.1",
     "js-cookie": "2.2.0",
     "prop-types": "15.6.2",
     "react": "16.7.0",
@@ -19,7 +20,10 @@
     "react-redux": "5.1.1",
     "react-router-dom": "4.3.1",
     "react-router-redux": "5.0.0-alpha.9",
+    "react-scroll": "^1.7.11",
+    "react-slick": "^0.23.2",
     "redux": "3.7.2",
+    "slick-carousel": "^1.8.1",
     "whatwg-fetch": "2.0.4"
   },
   "devDependencies": {
