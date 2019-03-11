@@ -44,7 +44,23 @@ a {
     flex-grow: 1; }
     .header .right-menu .setting {
       margin: auto 13px;
-      cursor: pointer; }
+      cursor: pointer;
+      display: flex;
+      position: relative;
+      padding: 10px; }
+      .header .right-menu .setting .setting-menu {
+        position: absolute;
+        width: 100%;
+        border-radius: 4px;
+        top: 0;
+        left: 0; }
+        .header .right-menu .setting .setting-menu div {
+          display: flex;
+          border-bottom: 1px solid #D7D7D7;
+          padding: 10px; }
+      .header .right-menu .setting .setting-menu-black {
+        background: white;
+        color: black; }
   .header-white {
     animation: change-to-white 500ms linear;
     background-color: white; }
@@ -87,6 +103,19 @@ a {
 .content .section {
   margin: 50px auto;
   max-width: 1200px; }
+  .content .section .section-container {
+    margin: 0 50px; }
+    .content .section .section-container .section-products .product .product-img {
+      margin: 25px auto 20px;
+      display: flex;
+      justify-content: center; }
+    .content .section .section-container .section-products .product div {
+      text-align: center; }
+    .content .section .section-container .section-products .product .product-name a {
+      color: #353535; }
+    .content .section .section-container .section-products .product .product-price a {
+      color: #353535;
+      font-size: 18px; }
 
 .btn {
   border: 1px solid #BDBDBD;
@@ -102,19 +131,44 @@ a {
   width: 100%;
   bottom: 0; }
 
+.arrow-grey {
+  background: url("/static/svg/arrow-grey.svg") !important; }
+
+.arrow-black {
+  background: url("/static/svg/arrow-black.svg") !important; }
+
+.arrow-white {
+  background: url("/static/svg/arrow-white.svg") !important; }
+
 .arrow {
-  background: url("/static/svg/left-slide.svg") !important;
-  top: 50%;
   width: 25px;
   height: 25px;
-  transform: translate(0, -50%);
   cursor: pointer;
-  position: absolute; }
+  display: block; }
 
 .arrow-prev {
-  left: -25px; }
+  left: -25px;
+  top: 50%;
+  transform: translate(0, -50%);
+  position: absolute; }
 
 .arrow-next {
   right: -25px;
-  background: url("/static/svg/left-slide.svg") !important;
-  transform: rotate(180deg); }
+  top: 50%;
+  position: absolute;
+  transform: rotate(180deg) translate(0, -50%); }
+
+.arrow-down {
+  transform: rotate(-90deg); }
+
+.arrow-up {
+  transform: rotate(90deg); }
+
+.orange-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: #E74724; }
+
+.hide {
+  opacity: 0; }

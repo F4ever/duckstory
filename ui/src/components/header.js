@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SECTIONS} from "../context";
-import {slugify} from "../utils";
+import {getCurrency, setCurrency, slugify} from "../utils";
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 
@@ -13,8 +13,13 @@ export default class Header extends Component {
     super(props);
 
     this.checkScroll = this.checkScroll.bind(this);
+    this.setCurrency = this.setCurrency.bind(this);
 
-    this.state = {header: INHERIT};
+    this.state = {
+      header: INHERIT,
+      showLangMenu: false,
+      showCurrencyMenu: false
+    };
   }
 
   componentDidMount(){
@@ -40,8 +45,15 @@ export default class Header extends Component {
     })
   }
 
+  setCurrency(currency){
+    document.dispatchEvent(new Event('ChangeCurrency'));
+    setCurrency(currency);
+  }
+
   render(){
-    const {header} = this.state;
+    const {header, showCurrencyMenu, showLangMenu} = this.state;
+
+    let currency = getCurrency();
 
     return (
       <header className={'header ' + header}>
@@ -70,16 +82,28 @@ export default class Header extends Component {
           }
         </div>
         <div className={'right-menu'}>
-          <div className={'setting'}>
-            Eng
-          </div>
-          <div className={'setting'}>
-            Eur
+          {/*<div className={'setting'}>*/}
+          {/*Eng*/}
+          {/*<span className={`arrow ${showLangMenu?'arrow-up':'arrow-down'} ${header===INHERIT?'arrow-white':'arrow-black'}`}/>*/}
+          {/*</div>*/}
+          <div className={'setting'} onClick={()=>this.setState({showCurrencyMenu: !showCurrencyMenu})}>
+            {currency}
+            <span className={`arrow ${showCurrencyMenu?'arrow-up':'arrow-down'} ${header===INHERIT?'arrow-white':'arrow-black'}`}/>
+            {
+              showCurrencyMenu?
+                <div className={`setting-menu ${header===INHERIT?'':'setting-menu-black'}`}>
+                  <div>{currency} <span className={`arrow ${showCurrencyMenu?'arrow-up':'arrow-down'} ${header===INHERIT?'arrow-white':'arrow-black'}`}/></div>
+                  <div onClick={()=>this.setCurrency('USD')}><span className={`orange-dot ${currency!=='USD'?'hide':''}`} style={{margin: '8px 5px 8px 0'}} />USD</div>
+                  <div onClick={()=>this.setCurrency('EUR')}><span className={`orange-dot ${currency!=='EUR'?'hide':''}`} style={{margin: '8px 5px 8px 0'}} />EUR</div>
+                  <div onClick={()=>this.setCurrency('BYN')}><span className={`orange-dot ${currency!=='BYN'?'hide':''}`} style={{margin: '8px 5px 8px 0'}} />BYN</div>
+                </div>:
+                null
+            }
           </div>
           {/*<div className={'setting'} style={{height: 22}}>*/}
-            {/*<svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
-              {/*<path d="M22.2241 2.78218C19.8479 0.405941 16.1035 0.405941 13.7273 2.78218L12.5032 4.0063L11.279 2.78218C8.90279 0.405941 5.15842 0.405941 2.78218 2.78218C0.405941 5.15842 0.405941 8.90279 2.78218 11.279L4.07831 12.5752L12.5032 21H12.5752L22.2961 11.279C24.6004 8.90279 24.6004 5.08641 22.2241 2.78218Z" strokeWidth="1.5" strokeMiterlimit="22.9256" strokeLinejoin="round"/>*/}
-            {/*</svg>*/}
+          {/*<svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+          {/*<path d="M22.2241 2.78218C19.8479 0.405941 16.1035 0.405941 13.7273 2.78218L12.5032 4.0063L11.279 2.78218C8.90279 0.405941 5.15842 0.405941 2.78218 2.78218C0.405941 5.15842 0.405941 8.90279 2.78218 11.279L4.07831 12.5752L12.5032 21H12.5752L22.2961 11.279C24.6004 8.90279 24.6004 5.08641 22.2241 2.78218Z" strokeWidth="1.5" strokeMiterlimit="22.9256" strokeLinejoin="round"/>*/}
+          {/*</svg>*/}
           {/*</div>*/}
           <div className={'setting'} style={{height: 28}}>
             <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">

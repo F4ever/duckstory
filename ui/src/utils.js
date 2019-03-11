@@ -12,3 +12,26 @@ export function slugify(string) {
     .reduce((result, ch)=>{ return result + (charMap[ch] || ch).replace(/[^\w\s$*_+~.()'"!\-:@]/g, '')}, '')
     .trim().replace(/[-\s]+/g, '-').toLowerCase();
 }
+
+export function setCurrency(currency) {
+  localStorage.setItem('currency', currency)
+}
+
+export function getCurrency(){
+  return localStorage.getItem('currency') || 'EUR';
+}
+
+export function getPrice(product) {
+  let priceField = getCurrency();
+
+  switch (priceField) {
+    case 'EUR':
+      return `EUR ${product.price_eur}`;
+    case 'USD':
+      return `USD ${product.price_usd}`;
+    case 'BYN':
+      return `BYN ${product.price_byn}`;
+    default:
+      return `EUR ${product.price_eur}`;
+  }
+}

@@ -27,7 +27,7 @@ class Product(models.Model):
     item_details = models.CharField(max_length=256)
 
     main_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, related_name='+')
-    images = models.ManyToManyField(Image, related_name='+')
+    images = models.ManyToManyField(Image, related_name='+', null=True, blank=True)
 
     sections = models.ManyToManyField(Section, through='ProductSection')
 

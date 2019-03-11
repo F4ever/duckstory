@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SECTIONS, PRODUCTS} from "../context";
-import {slugify} from "../utils";
+import {getPrice, slugify} from "../utils";
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import Slider from "react-slick";
 
@@ -9,7 +9,7 @@ function PrevArrow(props) {
   const { onClick } = props;
 
   return (
-    <div className={'arrow arrow-prev'} onClick={onClick} />
+    <div className={'arrow arrow-prev arrow-grey'} onClick={onClick} />
   );
 }
 
@@ -17,12 +17,17 @@ function NextArrow(props) {
   const { onClick } = props;
 
   return (
-    <div className={'arrow arrow-next'} onClick={onClick} />
+    <div className={'arrow arrow-next arrow-grey'} onClick={onClick} />
   );
 }
 
 
 export default class Index extends Component {
+
+  componentDidMount(){
+    document.addEventListener('ChangeCurrency', ()=>this.setState({}));
+  }
+
   render(){
     const settings = {
       speed: 500,
@@ -68,7 +73,18 @@ export default class Index extends Component {
                       section.products.map(product_id=>{
                         let product = PRODUCTS.find(obj=>obj.id===product_id);
                         return (
-                          <div key={product_id}>
+                          <div key={product_id} className={'product'}>
+                            <div className={'product-img'}>
+                              <a href={`/product/${product_id}`}>
+                                <img src={product.main_image?product.main_image.image:''} title={product.main_image?product.main_image.name:''} width={436} height={470}/>
+                              </a>
+                            </div>
+                            <div className={'product-name'}>
+                              <a href={`/product/${product_id}`}>{product.name}</a>
+                            </div>
+                            <div className={'product-price'}>
+                              <a href={`/product/${product_id}`}>{getPrice(product)}</a>
+                            </div>
                           </div>
                         )
                       })
