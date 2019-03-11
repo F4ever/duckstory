@@ -85,7 +85,8 @@ a {
     justify-content: center; }
 
 .content .section {
-  margin: 50px; }
+  margin: 50px auto;
+  max-width: 1200px; }
 
 .btn {
   border: 1px solid #BDBDBD;
@@ -101,9 +102,19 @@ a {
   width: 100%;
   bottom: 0; }
 
-.prev-arrow {
-  background: url("/static/svg/left-slide.svg"); }
+.arrow {
+  background: url("/static/svg/left-slide.svg") !important;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  position: absolute; }
 
-.next-arrow {
-  background: url("/static/svg/left-slide.svg");
+.arrow-prev {
+  left: -25px; }
+
+.arrow-next {
+  right: -25px;
+  background: url("/static/svg/left-slide.svg") !important;
   transform: rotate(180deg); }

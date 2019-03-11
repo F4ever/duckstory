@@ -17,7 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Base settings', {
-            'fields': ('name', 'description', 'item_details')
+            'fields': ('name', 'description', 'item_details', 'main_image', 'images')
         }),
         ('Price', {
             'fields': ('price_usd', 'price_eur', 'price_byn')

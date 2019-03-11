@@ -76,11 +76,11 @@ export default class Header extends Component {
           <div className={'setting'}>
             Eur
           </div>
-          <div className={'setting'} style={{height: 22}}>
-            <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.2241 2.78218C19.8479 0.405941 16.1035 0.405941 13.7273 2.78218L12.5032 4.0063L11.279 2.78218C8.90279 0.405941 5.15842 0.405941 2.78218 2.78218C0.405941 5.15842 0.405941 8.90279 2.78218 11.279L4.07831 12.5752L12.5032 21H12.5752L22.2961 11.279C24.6004 8.90279 24.6004 5.08641 22.2241 2.78218Z" strokeWidth="1.5" strokeMiterlimit="22.9256" strokeLinejoin="round"/>
-            </svg>
-          </div>
+          {/*<div className={'setting'} style={{height: 22}}>*/}
+            {/*<svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+              {/*<path d="M22.2241 2.78218C19.8479 0.405941 16.1035 0.405941 13.7273 2.78218L12.5032 4.0063L11.279 2.78218C8.90279 0.405941 5.15842 0.405941 2.78218 2.78218C0.405941 5.15842 0.405941 8.90279 2.78218 11.279L4.07831 12.5752L12.5032 21H12.5752L22.2961 11.279C24.6004 8.90279 24.6004 5.08641 22.2241 2.78218Z" strokeWidth="1.5" strokeMiterlimit="22.9256" strokeLinejoin="round"/>*/}
+            {/*</svg>*/}
+          {/*</div>*/}
           <div className={'setting'} style={{height: 28}}>
             <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.83221 5.72144H20.1678C20.6611 5.72144 21.0134 6.14425 21.0839 6.63754L22 22.9161C22 23.4094 21.5772 23.8322 21.0839 23.8322H1.91611C1.42282 23.8322 1 23.4094 1 22.9161L1.91611 6.63754C1.98658 6.07378 2.33893 5.72144 2.83221 5.72144Z" strokeWidth="1.5" strokeMiterlimit="22.9256"/>
