@@ -11,7 +11,8 @@ import {Route, Switch} from 'react-router-dom';
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
 import {composeWithDevTools} from "redux-devtools-extension";
 // ----------- Components --------------
-import Index from "./components";
+import Index from "./components/index";
+import ProductDescription from "./components/product-description";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
@@ -30,6 +31,7 @@ render(
         <Header/>
         <Switch>
           <Route exact path="/" component={Index}/>
+          <Route exact path="/product/:id" component={ProductDescription}/>
         </Switch>
         <Footer/>
       </div>

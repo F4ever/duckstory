@@ -43,6 +43,7 @@ a{
 
   .logo{
     margin-right: 15px;
+    cursor: pointer;
   }
 
   .sections{
@@ -131,23 +132,27 @@ a{
   }
 }
 
+#main-container>.btn-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #000000;
+  margin: 50px auto;
+}
+
 .content{
   .main-page{
     height: 100vh;
     background: url("/static/background/index.png");
     position: relative;
+  }
 
-    .btn-container{
-      position: absolute;
-      bottom: 80px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-
-      a{
-
-      }
-    }
+  .btn-container{
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .section{
@@ -194,6 +199,7 @@ a{
   width: 300px;
   padding: 8px 25px;
   text-align: center;
+  color: black;
 
   &-inv{
     color: white;

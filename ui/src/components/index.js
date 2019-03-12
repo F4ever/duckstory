@@ -3,6 +3,7 @@ import {SECTIONS, PRODUCTS} from "../context";
 import {getPrice, slugify} from "../utils";
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import Slider from "react-slick";
+import {NavLink} from "react-router-dom";
 
 
 function PrevArrow(props) {
@@ -43,7 +44,7 @@ export default class Index extends Component {
         <div className={'main-page'}>
           <div className={'btn-container'}>
             <a href={'https://api.whatsapp.com/send?phone=375293648560'}>
-              <div className={'btn btn-inv'}>WHATSAPP</div>
+              <div className={'btn btn-inv'}>ASK US ANYTHING</div>
             </a>
             <a href={'https://www.instagram.com/duck_story_store/'} target="_blank" style={{margin: '0 20px 0 30px'}}>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,15 +76,15 @@ export default class Index extends Component {
                         return (
                           <div key={product_id} className={'product'}>
                             <div className={'product-img'}>
-                              <a href={`/product/${product_id}`}>
+                              <NavLink to={`/product/${product_id}`}>
                                 <img src={product.main_image?product.main_image.image:''} title={product.main_image?product.main_image.name:''} width={436} height={470}/>
-                              </a>
+                              </NavLink>
                             </div>
                             <div className={'product-name'}>
-                              <a href={`/product/${product_id}`}>{product.name}</a>
+                              <NavLink to={`/product/${product_id}`}>{product.name}</NavLink>
                             </div>
                             <div className={'product-price'}>
-                              <a href={`/product/${product_id}`}>{getPrice(product)}</a>
+                              <NavLink to={`/product/${product_id}`}>{getPrice(product)}</NavLink>
                             </div>
                           </div>
                         )
