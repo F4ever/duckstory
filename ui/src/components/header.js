@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 
 
 const INHERIT = 'header-inherit';
+const WHITE_ANIMATION = 'header-white-animation';
 const WHITE = 'header-white';
 
 
@@ -32,11 +33,11 @@ export default class Header extends Component {
   checkScroll(event){
     const {header} = this.state;
 
-    if (event.pageY > window.innerHeight - 106 && header === INHERIT){
-      this.setState({header: WHITE});
+    if (window.pageYOffset > window.innerHeight - 106 && header === INHERIT){
+      this.setState({header: WHITE_ANIMATION});
     }
 
-    if (event.pageY < window.innerHeight - 106 && header === WHITE){
+    if (window.pageYOffset < window.innerHeight - 106 && header === WHITE_ANIMATION){
       this.setState({header: INHERIT});
     }
   }

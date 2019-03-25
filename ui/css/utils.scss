@@ -1,0 +1,207 @@
+.header{
+  position: fixed;
+  height: 84px;
+  width: 100%;
+  display: flex;
+  padding: 11px 0;
+  z-index: 10;
+  //background: white;
+
+  .logo{
+    margin-right: 15px;
+    cursor: pointer;
+  }
+
+  .sections{
+    margin: auto 0;
+    display: flex;
+    font-size: 14px;
+
+    .section{
+      margin: 0 15px;
+      cursor: pointer;
+    }
+  }
+
+  .right-menu{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+
+    .setting{
+      margin: auto 13px;
+      cursor: pointer;
+      display: flex;
+      position: relative;
+      padding: 10px;
+
+      .setting-menu{
+        position: absolute;
+        width: 100%;
+        border-radius: 4px;
+        top: 0;
+        left: 0;
+
+        div{
+          display: flex;
+          border-bottom: 1px solid #D7D7D7;
+          padding: 10px;
+        }
+      }
+
+      .setting-menu-black{
+        background: white;
+        color: black;
+      }
+    }
+  }
+
+  &-white{
+    background-color: white;
+
+    .right-menu{
+      stroke: black;
+    }
+
+    .section{
+      color: black;
+    }
+  }
+
+  &-white-animation{
+    @keyframes change-to-white
+    {
+      from { background-color: inherit; }
+      to { background-color: white; }
+    }
+
+    animation: change-to-white 500ms linear;
+
+    background-color: white;
+
+    .right-menu{
+      stroke: black;
+    }
+
+    .section{
+      color: black;
+    }
+  }
+
+  &-inherit{
+    @keyframes change-to-inherit
+    {
+      from { background-color: white; }
+      to { background-color: inherit; }
+    }
+
+    animation: change-to-inherit 500ms linear;
+
+    .right-menu{
+      stroke: white;
+    }
+
+    .section{
+      color: white;
+    }
+
+    .setting{
+      color: white;
+    }
+  }
+}
+
+.btn{
+  border: 1px solid #BDBDBD;
+  width: 300px;
+  padding: 8px 25px;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+
+  &-inv{
+    color: white;
+  }
+}
+
+.footer{
+  background: url("/static/svg/footer.svg") repeat;
+  height: 160px;
+  width: 100%;
+
+  bottom: 0;
+}
+
+.arrow-grey{
+  background: url("/static/svg/arrow-grey.svg") !important;
+}
+
+.arrow-black{
+  background: url("/static/svg/arrow-black.svg") !important;
+}
+
+.arrow-white{
+  background: url("/static/svg/arrow-white.svg") !important;
+}
+
+.arrow{
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: block;
+}
+
+.arrow-prev{
+  left: -25px;
+  top: 50%;
+  transform: translate(0,-50%);
+  position: absolute;
+}
+
+.arrow-next{
+  right: -25px;
+  top: 50%;
+  position: absolute;
+  transform: rotate(180deg) translate(0,-50%);
+}
+
+.arrow-down{
+  transform: rotate(-90deg);
+}
+
+.arrow-up{
+  transform: rotate(90deg);
+}
+
+.orange-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: #E74724;
+}
+
+.hide{
+  opacity: 0;
+}
+
+.add-to-bag{
+  color: white;
+  background: #424F31;
+}
+
+.size-btn{
+  width: 80px;
+  height: 30px;
+
+  padding: 0 0;
+  line-height: 28px;
+  margin: 20px 20px 20px 0;
+}
+
+.color-btn{
+  height: 22px;
+  width: 65px;
+
+  padding: 0 0;
+  margin: 18px 20px 20px 0;
+}

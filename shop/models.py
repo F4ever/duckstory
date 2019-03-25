@@ -10,6 +10,14 @@ class Image(models.Model):
         return self.name
 
 
+class Color(models.Model):
+    name = models.CharField(max_length=12)
+    color = models.CharField(max_length=10, help_text='like #ffffff')
+
+    def __str__(self):
+        return '{} {}'.format(self.name, self.color)
+
+
 class Section(models.Model):
     name = models.CharField(max_length=64)
     order = models.PositiveSmallIntegerField()
@@ -27,7 +35,8 @@ class Product(models.Model):
     item_details = models.CharField(max_length=256)
 
     main_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, related_name='+')
-    images = models.ManyToManyField(Image, related_name='+', null=True, blank=True)
+    images = models.ManyToManyField(Image, related_name='+', blank=True)
+    colors = models.ManyToManyField(Color, related_name='+')
 
     sections = models.ManyToManyField(Section, through='ProductSection')
 

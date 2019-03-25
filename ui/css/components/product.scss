@@ -1,0 +1,31 @@
+.product-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 106px;
+
+  .base-section{
+    >div{
+      margin: 3px 0;
+    }
+  }
+
+  .product-image{
+    margin: 30px;
+  }
+
+  .product-description{
+    margin: 30px;
+  }
+
+  .size-section{
+    display: flex;
+    justify-content: start;
+  }
+
+  .color-section-container{
+    .color-section{
+      display: flex;
+      justify-content: start;
+    }
+  }
+}

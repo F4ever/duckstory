@@ -4,18 +4,27 @@ from .models import *
 
 
 class ImageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, obj):
+        return '/' + obj.image.name
 
     class Meta:
         model = Image
-        fields = serializers.ALL_FIELDS
+        fields = ('name', 'image')
+
+
+class ColorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Color
+        fields = ('name', 'color')
 
 
 class ProductSerializer(serializers.ModelSerializer):
     main_image = ImageSerializer()
     images = ImageSerializer(many=True)
-
-    def get_main_img(self):
-        return
+    colors = ColorSerializer(many=True)
 
     class Meta:
         model = Product
