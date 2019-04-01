@@ -24,6 +24,10 @@ class Header extends Component {
       showLangMenu: false,
       showCurrencyMenu: false
     };
+
+    document.addEventListener('MainPageHasBeenRendered', ()=>{
+      this.scrollTo(window.location.hash.substr(1))
+    });
   }
 
   componentWillReceiveProps(nextProps){
@@ -32,7 +36,9 @@ class Header extends Component {
         header: INHERIT
       });
       if (nextProps.routing.location.hash){
-        document.addEventListener('MainPageHasBeenRendered', ()=>this.scrollTo(nextProps.routing.location.hash.substr(1)));
+        document.addEventListener('MainPageHasBeenRendered', ()=>{
+          this.scrollTo(nextProps.routing.location.hash.substr(1))
+        });
       }
     }else{
       this.setState({
