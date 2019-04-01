@@ -122,6 +122,10 @@
   &-inv{
     color: white;
   }
+
+  &:hover{
+    background: rgba(242, 242, 242, 0.5);
+  }
 }
 
 .footer{
@@ -187,6 +191,10 @@
 .add-to-bag{
   color: white;
   background: #424F31;
+
+  &:hover{
+    background: #54643E;
+  }
 }
 
 .size-btn{
@@ -203,5 +211,42 @@
   width: 65px;
 
   padding: 0 0;
+}
+
+.color-btn-container{
   margin: 18px 20px 20px 0;
+  border: 1px solid #ffffff;
+  padding: 2px;
+
+  &:hover{
+    border: 1px solid #424F31;
+  }
+}
+
+.active-color-container{
+  border: 1px solid #424F31;
+}
+
+.social-icon-white:hover{
+  svg{
+    fill: rgba(242, 242, 242, 0.5);
+  }
+}
+
+.social-icon-black:hover{
+  svg{
+    circle{
+      fill: #54565a;
+    }
+  }
+}
+
+.icon{
+  cursor: pointer;
+
+  &:hover{
+    path{
+      fill: #7E7D7D;
+    }
+  }
 }

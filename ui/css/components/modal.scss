@@ -1,0 +1,21 @@
+.modal-container{
+  background: rgba(0, 0, 0, 0.15);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 22;
+  top: 0;
+
+  .modal{
+    width: 430px;
+    min-height: 200px;
+    background: white;
+    margin: 200px auto auto;
+
+    .icon{
+      margin: 7px 2px;
+      float: right;
+    }
+  }
+}

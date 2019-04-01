@@ -1,3 +1,6 @@
+import {SECTIONS} from "./context";
+
+
 export function scrollToId(hashId) {
   let element = document.getElementById(hashId);
   if (element !== null){
@@ -34,4 +37,8 @@ export function getPrice(product) {
     default:
       return `EUR ${product.price_eur}`;
   }
+}
+
+export function getSectionFromProductId(productId) {
+  return SECTIONS.find(section=>section.products.find((sectionProductId)=>sectionProductId===productId))
 }

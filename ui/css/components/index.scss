@@ -11,6 +11,7 @@
     height: 100vh;
     background: url("/static/background/index.png");
     position: relative;
+    background-size: cover;
   }
 
   .btn-container{
@@ -36,6 +37,15 @@
             margin: 25px auto 20px;
             display: flex;
             justify-content: center;
+
+            img{
+              object-fit: cover;
+              border: 1px solid #fff;
+
+              &:hover{
+                border: 1px solid #BDBDBD;
+              }
+            }
           }
 
           div{

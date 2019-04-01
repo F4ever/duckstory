@@ -3,6 +3,8 @@ import {SECTIONS} from "../context";
 import {getCurrency, setCurrency, slugify} from "../utils";
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+import {push} from "react-router-redux";
 
 
 const INHERIT = 'header-inherit';
@@ -10,7 +12,7 @@ const WHITE_ANIMATION = 'header-white-animation';
 const WHITE = 'header-white';
 
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -22,6 +24,21 @@ export default class Header extends Component {
       showLangMenu: false,
       showCurrencyMenu: false
     };
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (window.location.pathname==='/'){
+      this.setState({
+        header: INHERIT
+      });
+      if (nextProps.routing.location.hash){
+        document.addEventListener('MainPageHasBeenRendered', ()=>this.scrollTo(nextProps.routing.location.hash.substr(1)));
+      }
+    }else{
+      this.setState({
+        header: WHITE
+      })
+    }
   }
 
   componentDidMount(){
@@ -43,11 +60,15 @@ export default class Header extends Component {
   }
 
   scrollTo(section){
-    scroller.scrollTo(section, {
-      duration: 800,
-      smooth: true,
-      offset: -106
-    })
+    if (window.location.pathname==='/') {
+      scroller.scrollTo(section, {
+        duration: 800,
+        smooth: true,
+        offset: -106
+      });
+    }else{
+      this.props.redirectToHome(section);
+    }
   }
 
   setCurrency(currency){
@@ -136,3 +157,12 @@ export default class Header extends Component {
     );
   }
 }
+
+export default connect(
+  state=>({
+    routing: state.routing
+  }),
+  dispatch=>({
+    redirectToHome: (anchor) => {dispatch(push(`/#${slugify(anchor)}`))}
+  })
+)(Header);

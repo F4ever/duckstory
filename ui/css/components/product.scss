@@ -11,6 +11,12 @@
 
   .product-image{
     margin: 30px;
+
+    img{
+      height: 690px;
+      width: 560px;
+      object-fit: cover;
+    }
   }
 
   .product-description{
@@ -27,5 +33,11 @@
       display: flex;
       justify-content: start;
     }
+  }
+
+  .additional-block{
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
   }
 }

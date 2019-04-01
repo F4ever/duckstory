@@ -31,8 +31,9 @@ class Section(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=64)
-    description = models.CharField(max_length=256)
-    item_details = models.CharField(max_length=256)
+    description = models.CharField(max_length=256, null=True, blank=True)
+    item_details = models.CharField(max_length=256, null=True, blank=True)
+    delivery = models.CharField(max_length=256, null=True, blank=True)
 
     main_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, related_name='+')
     images = models.ManyToManyField(Image, related_name='+', blank=True)
