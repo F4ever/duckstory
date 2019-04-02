@@ -5,7 +5,7 @@ export default class Footer extends Component {
   render(){
     return [
       <div className={'btn-container'} key={1}>
-        <a href={'https://api.whatsapp.com/send?phone=375293648560'}>
+        <a href={'https://api.whatsapp.com/send?phone=375293648560'} target="_blank">
           <div className={'btn'}>ASK US ANYTHING</div>
         </a>
         <a href={'https://www.instagram.com/duck_story_store/'} className={'social-icon-black'} target="_blank" style={{margin: '0 20px 0 30px'}}>

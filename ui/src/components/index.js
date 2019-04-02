@@ -44,7 +44,7 @@ export default class Index extends Component {
       <div className={'content'}>
         <div className={'main-page'}>
           <div className={'btn-container'}>
-            <a href={'https://api.whatsapp.com/send?phone=375293648560'}>
+            <a href={'https://api.whatsapp.com/send?phone=375293648560'} target="_blank">
               <div className={'btn btn-inv'}>ASK US ANYTHING</div>
             </a>
             <a href={'https://www.instagram.com/duck_story_store/'} className={'social-icon-white'} target="_blank" style={{margin: '0 20px 0 30px'}}>

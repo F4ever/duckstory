@@ -255,7 +255,8 @@ hr {
       width: 560px;
       object-fit: cover; }
   .product-container .product-description {
-    margin: 30px; }
+    margin: 30px;
+    width: 352px; }
   .product-container .size-section {
     display: flex;
     justify-content: start; }

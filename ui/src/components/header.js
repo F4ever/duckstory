@@ -35,6 +35,7 @@ class Header extends Component {
       this.setState({
         header: INHERIT
       });
+
       if (nextProps.routing.location.hash){
         document.addEventListener('MainPageHasBeenRendered', ()=>{
           this.scrollTo(nextProps.routing.location.hash.substr(1))
@@ -48,9 +49,7 @@ class Header extends Component {
   }
 
   componentDidMount(){
-    if (window.location.pathname==='/'){
-      document.addEventListener('scroll', this.checkScroll, true);
-    }
+    document.addEventListener('scroll', this.checkScroll, true);
   }
 
   checkScroll(event){
