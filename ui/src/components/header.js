@@ -25,9 +25,11 @@ class Header extends Component {
       showCurrencyMenu: false
     };
 
-    document.addEventListener('MainPageHasBeenRendered', ()=>{
-      this.scrollTo(window.location.hash.substr(1))
-    });
+    if (window.location.hash){
+      document.addEventListener('MainPageHasBeenRendered', ()=>{
+        this.scrollTo(window.location.hash.substr(1))
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps){
